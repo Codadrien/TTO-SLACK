@@ -13,7 +13,7 @@ PARIS_TZ = pytz.timezone("Europe/Paris")
 
 # Mapping des noms vers les User IDs Slack
 USER_IDS = {
-    "Arnaud": "<@U04JBM2N285",
+    "Arnaud": "<@U04JBM2N285>",
     "Arthur": "<@U05D4LENHEE>",
     "Lou": "<@U05B1HZ6AU9>",
     "Camille G": "<@U04H95BL2GN>",
@@ -61,7 +61,7 @@ def send_reminder(test_date=None):
 
     # Construit le message
     message = {
-        "text": f"🔔 *RAPPEL TEST SITE*\n\nAujourd'hui c'est au tour de {mentions} de faire les tests.\n\n📋 <https://docs.google.com/spreadsheets/d/1IN12Idjt2yikYdtEAutw6Ko9FMWjzVIrj0TdLgFPVHg/edit|Spreadsheet des tests>\n\nMerci de mettre une coche ✅ *Valider* quand c'est fait !"
+        "text": f"🔔 *RAPPEL TEST SITE*\n\nAujourd'hui c'est au tour de {mentions} de faire les tests.\n\n📋 <https://docs.google.com/spreadsheets/d/1IN12Idjt2yikYdtEAutw6Ko9FMWjzVIrj0TdLgFPVHg/edit|Lien du doc à remplir>\n\nMerci de mettre un ✅ quand c'est fait !"
     }
 
     print(f"👥 Personnes du jour: {noms}")
