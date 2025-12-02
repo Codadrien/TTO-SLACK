@@ -1,0 +1,27 @@
+name: Rappel Test Site Slack
+
+on:
+  schedule:
+    # 10h00 heure de Paris = 9h00 UTC (hiver) ou 8h00 UTC (été)
+    - cron: '0 9 * * 1-5'  # 9h UTC = 10h Paris (hiver), lundi-vendredi
+  workflow_dispatch:  # Pour tester manuellement
+
+jobs:
+  send-reminder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests pytz
+
+      - name: Send Slack reminder
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        run: python reminder.py
