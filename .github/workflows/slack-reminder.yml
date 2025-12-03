@@ -11,6 +11,11 @@ on:
         description: 'Date de test (format: YYYY-MM-DD, ex: 2025-12-05). Laisser vide pour aujourdhui.'
         required: false
         default: ''
+      canal_test:
+        description: 'Envoyer dans le canal test'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   send-reminder:
@@ -32,5 +37,7 @@ jobs:
       - name: Send Slack reminder
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK_TEST: ${{ secrets.SLACK_WEBHOOK_TEST }}
           TEST_DATE: ${{ github.event.inputs.test_date }}
+          CANAL_TEST: ${{ github.event.inputs.canal_test }}
         run: python reminder.py

@@ -7,6 +7,7 @@ import pytz
 
 # Webhook Slack (sera défini dans les secrets GitHub)
 WEBHOOK_URL = os.environ.get("SLACK_WEBHOOK")
+WEBHOOK_URL_TEST = os.environ.get("SLACK_WEBHOOK_TEST")
 
 # Fuseau horaire Paris
 PARIS_TZ = pytz.timezone("Europe/Paris")
@@ -61,13 +62,20 @@ def send_reminder(test_date=None):
 
     # Construit le message
     message = {
-        "text": f"🔔 *RAPPEL TEST SITE*\n\nAujourd'hui c'est au tour de {mentions} de faire les tests.\n\n📋 <https://docs.google.com/spreadsheets/d/1IN12Idjt2yikYdtEAutw6Ko9FMWjzVIrj0TdLgFPVHg/edit|Lien du doc à remplir>\n\nMerci de mettre un ✅ quand c'est fait !"
+        "text": f"🔔 *RAPPEL TEST SITE* 🔔\n\nAujourd'hui c'est au tour de {mentions} de faire les tests : 📋 <https://docs.google.com/spreadsheets/d/1IN12Idjt2yikYdtEAutw6Ko9FMWjzVIrj0TdLgFPVHg/edit|Lien du doc à remplir>\n\nMerci de mettre un ✅ quand c'est fait !"
     }
 
     print(f"👥 Personnes du jour: {noms}")
 
-    # Envoie vers Slack
-    response = requests.post(WEBHOOK_URL, json=message)
+    # Vérifie si on envoie dans le canal test
+    canal_test = os.environ.get("CANAL_TEST", "false").lower() == "true"
+
+    if canal_test and WEBHOOK_URL_TEST:
+        print("🧪 Envoi dans le canal test")
+        response = requests.post(WEBHOOK_URL_TEST, json=message)
+    else:
+        # Envoie vers Slack (canal normal)
+        response = requests.post(WEBHOOK_URL, json=message)
 
     if response.status_code == 200:
         print("✅ Rappel envoyé avec succès !")
