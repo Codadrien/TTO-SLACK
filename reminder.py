@@ -62,7 +62,7 @@ def send_reminder(test_date=None):
 
     # Construit le message
     message = {
-        "text": f"🔔 *RAPPEL TEST SITE* 🔔\n\nAujourd'hui c'est au tour de {mentions} de faire les tests : 📋 <https://docs.google.com/spreadsheets/d/1IN12Idjt2yikYdtEAutw6Ko9FMWjzVIrj0TdLgFPVHg/edit|Lien du doc à remplir>\n\nMerci de mettre un ✅ quand c'est fait !"
+        "text": f"🔔 *RAPPEL TEST SITE* 🔔\n\nAujourd'hui c'est au tour de {mentions} de faire les tests : <https://docs.google.com/spreadsheets/d/1IN12Idjt2yikYdtEAutw6Ko9FMWjzVIrj0TdLgFPVHg/edit|Lien du doc à remplir>\n\nMerci de mettre un ✅ quand c'est fait !"
     }
 
     print(f"👥 Personnes du jour: {noms}")
