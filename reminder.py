@@ -20,7 +20,6 @@ USER_IDS = {
     "Camille G": "<@U04H95BL2GN>",
     "Adrien": "<@U08A2348NTS>",
     "Nicolas": "<@U0768DLD5PG>",
-    "Camille L": "<@U0764ABCC14>",
     "Pierre": "<@U072Y1NSDF0>",
     "Lucas": "<@U07MC2TBLKY>",
     "Tobias": "<@U0764AAM4MU>",

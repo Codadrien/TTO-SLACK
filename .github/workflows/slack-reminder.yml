@@ -3,8 +3,8 @@ name: Rappel Test Site Slack
 on:
   schedule:
     # 10h00 heure de Paris = 9h00 UTC (hiver)
-    # Actif du 2 au 31 décembre 2025
-    - cron: '0 9 2-31 12 *'  # Du 2 au 31 décembre, tous les jours
+    # Actif du 6 au 31 janvier 2026
+    - cron: '0 9 6-31 1 *'  # Du 6 au 31 janvier, tous les jours
   workflow_dispatch:
     inputs:
       test_date:
